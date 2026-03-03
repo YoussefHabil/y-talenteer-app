@@ -1,24 +1,34 @@
 export default function CareerTipsPage() {
     const articles = [
         {
-            title: "Understanding B2 vs C1 English Levels",
-            description: "In call centers, B2 means you can comfortably handle a conversation, understand the main points, and express yourself clearly. C1 means you have near-native fluency, can handle complex objections, and understand nuances and idioms. Practice speaking naturally rather than memorizing scripts.",
-            category: "Language Skills"
+            title: "Mastering the 'Introduce Yourself' Question",
+            description: "This is usually the first question in any interview. Keep it professional and concise. Focus on your relevant education, recent experiences, and key skills that match the role you are applying for, rather than sharing overly personal details.",
+            category: "Interview Prep"
         },
         {
-            title: "What is a US Housing Account?",
-            description: "A housing account typically involves booking hotel rooms and accommodations for exhibitors or attendees of tradeshows and conferences in the US. You will need strong attention to detail, good geographical awareness, and excellent customer service skills to manage reservations.",
-            category: "Account Knowledge"
-        },
-        {
-            title: "Telesales vs Customer Service",
-            description: "Telesales focuses on outbound or inbound calls where the primary goal is selling a product or service, often with commission-based incentives (KPIs). Customer Service focuses on resolving issues, answering inquiries, and ensuring client satisfaction with a focus on metrics like Average Handling Time (AHT) and Quality.",
+            title: "Customer Service vs Telesales vs Telemarketing",
+            description: "Customer Service is about helping existing clients and resolving issues. Telesales focuses on closing deals and selling products directly over the phone. Telemarketing is more about generating interest, creating awareness, and gathering leads.",
             category: "Industry Insights"
         },
         {
-            title: "How to Ace the Phone Screening",
-            description: "Make sure you are in a quiet room with strong internet. Speak clearly, don't rush, and actively listen. Smile while you speak—it actually changes your tone of voice and makes you sound more energetic and approachable.",
+            title: "Answering: 'Where do you see yourself in the future?'",
+            description: "Employers ask this to check your ambition and see if you plan to stay. Express a desire to learn and grow within the industry, take on more responsibilities, and eventually move into a specialized or leadership role.",
             category: "Interview Prep"
+        },
+        {
+            title: "Why Do You Want to Work in This Field?",
+            description: "Avoid mentioning that you just want a job. Instead, talk about your enthusiasm for helping people (for customer service), your competitive drive for achieving targets (for sales), or your interest in building professional communication skills.",
+            category: "Career Advice"
+        },
+        {
+            title: "Discussing a Hard Situation You Overcame",
+            description: "Use the STAR method: Situation (what happened), Task (what you needed to do), Action (how you solved it), and Result (the positive outcome). Always show that you can stay calm under pressure and find logical solutions.",
+            category: "Interview Prep"
+        },
+        {
+            title: "How to Discuss Past Experiences",
+            description: "When asked about your previous jobs, clearly highlight the responsibilities you handled and the skills you gained. Even if it was an entirely different field, focus on transferable skills like teamwork, problem-solving, and adaptability.",
+            category: "Career Advice"
         }
     ];
 
