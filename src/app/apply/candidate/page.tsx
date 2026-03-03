@@ -97,8 +97,8 @@ function CandidateForm() {
                     <input required type="text" value={formData.fullName} onChange={e => setFormData({ ...formData, fullName: e.target.value })} className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-gold-500 transition" />
                 </div>
                 <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">Phone Number *</label>
-                    <input required type="tel" pattern="^01[0125][0-9]{8}$" maxLength={11} title="Please enter a valid 11-digit Egyptian phone number starting with 01" placeholder="e.g. 01012345678" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-gold-500 transition" />
+                    <label className="block text-sm font-medium text-slate-300 mb-2">WhatsApp Number *</label>
+                    <input required type="text" placeholder="e.g. +201012345678" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-gold-500 transition" />
                 </div>
             </div>
 
