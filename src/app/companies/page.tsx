@@ -8,7 +8,7 @@ const companies = [
         logo: "T",
         hiring: true,
         description: "Looking for Telesales Agents for US Accounts. Many accounts available, offering great salaries, commissions, and fixed weekends off.",
-        openPositions: 2,
+        openPositions: 1,
     },
     {
         id: "creative-basket",
@@ -19,11 +19,11 @@ const companies = [
         openPositions: 2,
     },
     {
-        id: "expo-way",
-        name: "Expo Way",
-        logo: "EW",
+        id: "att",
+        name: "AT&T",
+        logo: "A",
         hiring: true,
-        description: "Hiring Telesales agents for a US HOUSING account with great salaries and unlimited commissions.",
+        description: "Dynamic team looking for Solar Appointments Setters! Work from home availability depending on performance.",
         openPositions: 1,
     }
 ];

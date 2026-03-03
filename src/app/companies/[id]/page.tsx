@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 export default function CompanyDetailPage({ params }: { params: { id: string } }) {
     const companyId = params.id;
 
-    if (companyId !== "ttc" && companyId !== "creative-basket" && companyId !== "expo-way") {
+    if (companyId !== "ttc" && companyId !== "creative-basket" && companyId !== "att") {
         notFound();
     }
 
@@ -41,7 +41,7 @@ export default function CompanyDetailPage({ params }: { params: { id: string } }
             jobs: [
                 {
                     id: "cb-1",
-                    title: "Telesales Agent (US Housing Account)",
+                    title: "Telesales Agent (Housing Experience MUST)",
                     salary: "15k+ (negotiable) + 2k KPIs + unlimited commissions",
                     shift: "US working hours: 3 PM to 12 AM",
                     requirements: [
@@ -57,18 +57,12 @@ export default function CompanyDetailPage({ params }: { params: { id: string } }
                         "Fully paid training",
                         "Medical and social insurance after probation",
                         "2 fixed days off (Saturdays and Sundays)",
-                        "Location: Nasr City"
+                        "Location: Nasr City - Makram"
                     ]
-                }
-            ]
-        },
-        "expo-way": {
-            name: "Expo Way",
-            description: "Expo way is hiring telesales agents for a US HOUSING account. Booking hotel rooms for exhibitors attending different tradeshows.",
-            jobs: [
+                },
                 {
-                    id: "ew-1",
-                    title: "Telesales Agent (US Housing Account)",
+                    id: "cb-2",
+                    title: "Telesales Agent (Telesales Exp Preferred)",
                     salary: "9k-14k depending on experience + unlimited commissions",
                     shift: "US working hours: 3 PM to 12 AM",
                     requirements: [
@@ -79,12 +73,35 @@ export default function CompanyDetailPage({ params }: { params: { id: string } }
                         "Foreigners are not preferred"
                     ],
                     benefits: [
-                        "Transportation allowance included in the net salary (1k males, 1.3k females)",
+                        "Transportation allowance: 1k for males, 1.3k for females",
                         "Weekly and Monthly spiffs/bonuses",
                         "Fully paid training",
                         "Medical and Social insurance after probation",
                         "2 fixed days off (Saturdays and Sundays)",
-                        "Location: Makram Ebid, Nasr City"
+                        "Location: Nasr City - Makram"
+                    ]
+                }
+            ]
+        },
+        "att": {
+            name: "AT&T",
+            description: "🌟 Join the dynamic team at ATT as a Solar Appointments Setter! 🌞 \nAvailability to work from home depending on your performance during probation.",
+            jobs: [
+                {
+                    id: "att-1",
+                    title: "Solar Appointments Setter",
+                    salary: "12,000 EGP (10,000 Net + 2k KPIs) + Commissions from $40/app",
+                    shift: "04:00 PM till 12:00 AM (till 11 PM for Girls)",
+                    requirements: [
+                        "Fluent English speakers (B2-C1)",
+                        "Students, undergraduates, dropouts, gap year, and graduates are all welcome!",
+                        "Min age 18, Max age 27",
+                        "Accept foreigners with no heavy accent at all"
+                    ],
+                    benefits: [
+                        "Work from home availability (depending on probation performance)",
+                        "Lucrative Commissions starting from $40 per appointment after just 7 appointments",
+                        "Location: Maadi"
                     ]
                 }
             ]

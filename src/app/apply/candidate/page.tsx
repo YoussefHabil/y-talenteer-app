@@ -148,7 +148,6 @@ function CandidateForm() {
             </div>
 
             <div className="border-t border-slate-800 pt-8 mt-8">
-                <h3 className="text-xl font-bold mb-6 text-white text-center">Mandatory Uploads</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="p-6 border-2 border-dashed border-slate-700 rounded-2xl bg-slate-800/20 text-center hover:border-gold-500/50 transition-colors">
