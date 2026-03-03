@@ -5,7 +5,7 @@ export default function AboutPage() {
 
             <div className="prose prose-invert prose-lg max-w-none text-slate-300">
                 <p className="lead text-2xl text-slate-200 mb-8 text-center font-medium">
-                    With over 7 years in the recruitment industry, we have redefined how companies find elite talent in Egypt.
+                    With over 5 years in the recruitment industry, we have redefined how companies find elite talent in Egypt.
                 </p>
 
                 <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 mb-12 shadow-2xl">
