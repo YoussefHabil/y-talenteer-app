@@ -16,7 +16,7 @@ export default function Navbar() {
                         <Link href="/companies" className="text-slate-300 hover:text-gold-400 transition-colors">Companies Hiring</Link>
                         <Link href="/career-tips" className="text-slate-300 hover:text-gold-400 transition-colors">Career Tips</Link>
                         <div className="flex space-x-4">
-                            <Link href="/apply/candidate" className="px-5 py-2.5 rounded-full bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 transition ml-4">
+                            <Link href="/companies" className="px-5 py-2.5 rounded-full bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 transition ml-4">
                                 Find a Job
                             </Link>
                             <Link href="/apply/company" className="px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-slate-900 font-semibold hover:opacity-90 transition">

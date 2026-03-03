@@ -21,6 +21,7 @@ function CandidateForm() {
         englishLevel: '',
         experience: '',
         preferredCompany: prefillCompany.replace('-', ' '),
+        recruiterReference: '',
     });
 
     const [cvFile, setCvFile] = useState<File | null>(null);
@@ -31,8 +32,8 @@ function CandidateForm() {
         setIsSubmitting(true);
         setError('');
 
-        if (!cvFile || !voiceFile) {
-            setError('Both CV and Voice Note are mandatory.');
+        if (!voiceFile) {
+            setError('Voice Note is mandatory.');
             setIsSubmitting(false);
             return;
         }
@@ -40,7 +41,7 @@ function CandidateForm() {
         try {
             const data = new FormData();
             Object.entries(formData).forEach(([key, value]) => data.append(key, value));
-            data.append('cv', cvFile);
+            if (cvFile) data.append('cv', cvFile);
             data.append('voice', voiceFile);
 
             const response = await fetch('/api/apply/candidate', {
@@ -139,14 +140,19 @@ function CandidateForm() {
                 </div>
             </div>
 
+            <div>
+                <label className="block text-sm font-medium text-slate-300 mb-2">Recruiter Name / Reference (Optional)</label>
+                <input type="text" value={formData.recruiterReference} onChange={e => setFormData({ ...formData, recruiterReference: e.target.value })} placeholder="Did someone refer you? Let us know!" className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-gold-500 transition" />
+            </div>
+
             <div className="border-t border-slate-800 pt-8 mt-8">
                 <h3 className="text-xl font-bold mb-6 text-white text-center">Mandatory Uploads</h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="p-6 border-2 border-dashed border-slate-700 rounded-2xl bg-slate-800/20 text-center hover:border-gold-500/50 transition-colors">
                         <div className="text-4xl mb-4">📄</div>
-                        <label className="block text-sm font-medium text-slate-300 mb-2">Upload CV (PDF/DOCX) *</label>
-                        <input required type="file" accept=".pdf,.doc,.docx" onChange={e => setCvFile(e.target.files?.[0] || null)} className="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-800 file:text-gold-400 hover:file:bg-slate-700 cursor-pointer" />
+                        <label className="block text-sm font-medium text-slate-300 mb-2">Upload CV (PDF/DOCX) (Optional)</label>
+                        <input type="file" accept=".pdf,.doc,.docx" onChange={e => setCvFile(e.target.files?.[0] || null)} className="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-800 file:text-gold-400 hover:file:bg-slate-700 cursor-pointer" />
                     </div>
 
                     <div className="p-6 border-2 border-dashed border-slate-700 rounded-2xl bg-slate-800/20 text-center hover:border-gold-500/50 transition-colors">

@@ -38,7 +38,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                    <Link href="/apply/candidate" className="px-8 py-4 rounded-full bg-slate-800 border border-slate-700 text-white font-semibold hover:bg-slate-700 hover:border-slate-600 transition shadow-lg hover:shadow-xl">
+                    <Link href="/companies" className="px-8 py-4 rounded-full bg-slate-800 border border-slate-700 text-white font-semibold hover:bg-slate-700 hover:border-slate-600 transition shadow-lg hover:shadow-xl">
                         Find Your Dream Job
                     </Link>
                     <Link href="/apply/company" className="px-8 py-4 rounded-full bg-gradient-to-r from-gold-500 to-gold-600 text-slate-950 font-bold hover:opacity-90 transition shadow-lg hover:shadow-gold-500/20">

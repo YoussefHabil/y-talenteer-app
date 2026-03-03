@@ -15,24 +15,28 @@ export async function POST(req: NextRequest) {
         const englishLevel = formData.get('englishLevel') as string;
         const experience = formData.get('experience') as string;
         const preferredCompany = formData.get('preferredCompany') as string || 'General';
+        const recruiterReference = formData.get('recruiterReference') as string || 'None';
 
-        const cv = formData.get('cv') as File;
+        const cv = formData.get('cv') as File | null;
         const voice = formData.get('voice') as File;
 
-        if (!cv || !voice) {
-            return NextResponse.json({ error: 'CV and Voice File are required' }, { status: 400 });
+        if (!voice) {
+            return NextResponse.json({ error: 'Voice File is required' }, { status: 400 });
         }
 
-        // 1. Upload CV to Supabase Storage
-        const cvBuffer = await cv.arrayBuffer();
-        const cvExt = cv.name.split('.').pop();
-        const cvFileName = `candidates/cv_${Date.now()}_${fullName.replace(/\s+/g, '_')}.${cvExt}`;
-        const { error: cvError } = await supabase.storage
-            .from('applications')
-            .upload(cvFileName, cvBuffer, { contentType: cv.type });
+        // 1. Upload CV to Supabase Storage (Optional)
+        let cvUrl = 'Not Provided';
+        if (cv) {
+            const cvBuffer = await cv.arrayBuffer();
+            const cvExt = cv.name.split('.').pop();
+            const cvFileName = `candidates/cv_${Date.now()}_${fullName.replace(/\s+/g, '_')}.${cvExt}`;
+            const { error: cvError } = await supabase.storage
+                .from('applications')
+                .upload(cvFileName, cvBuffer, { contentType: cv.type });
 
-        if (cvError) throw new Error(`CV Upload failed: ${cvError.message}`);
-        const cvUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/applications/${cvFileName}`;
+            if (cvError) throw new Error(`CV Upload failed: ${cvError.message}`);
+            cvUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/applications/${cvFileName}`;
+        }
 
         // 2. Upload Voice Note to Supabase Storage
         const voiceBuffer = await voice.arrayBuffer();
@@ -53,7 +57,7 @@ export async function POST(req: NextRequest) {
         // We append to a tab named "Candidates"
         await sheets.spreadsheets.values.append({
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Candidates!A:L', // Make sure you have a tab named Candidates
+            range: 'Candidates!A:M', // Make sure you have a tab named Candidates
             valueInputOption: 'USER_ENTERED',
             requestBody: {
                 values: [
@@ -69,7 +73,8 @@ export async function POST(req: NextRequest) {
                         preferredCompany,  // I: Preferred Company
                         cvUrl,             // J: CV Link
                         voiceUrl,          // K: Voice Note Link
-                        status             // L: Status
+                        status,            // L: Status
+                        recruiterReference // M: Recruiter Reference
                     ]
                 ]
             }

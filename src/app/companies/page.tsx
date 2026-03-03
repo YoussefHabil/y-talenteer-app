@@ -3,36 +3,28 @@ import Link from 'next/link';
 // Mock data early on. Later, this could be fetched from Google Sheets or Supabase
 const companies = [
     {
-        id: "att",
-        name: "AT&T",
-        logo: "A",
-        hiring: true,
-        description: "Leading telecommunications company seeking bilingual customer service and tech support representatives.",
-        openPositions: 15,
-    },
-    {
         id: "ttc",
         name: "TTC",
         logo: "T",
         hiring: true,
-        description: "Global BPO provider specializing in high-ticket sales and retention campaigns.",
-        openPositions: 8,
+        description: "Looking for Telesales Agents for US Accounts. Many accounts available, offering great salaries, commissions, and fixed weekends off.",
+        openPositions: 2,
     },
     {
         id: "creative-basket",
         name: "Creative Basket",
         logo: "CB",
         hiring: true,
-        description: "Innovative marketing agency looking for outbound sales specialists and account managers.",
-        openPositions: 5,
+        description: "Hiring for US Housing accounts. Booking hotel rooms for exhibitors attending tradeshows.",
+        openPositions: 2,
     },
     {
-        id: "ehp",
-        name: "EHP",
-        logo: "E",
-        hiring: false,
-        description: "Healthcare provider support services.",
-        openPositions: 0,
+        id: "expo-way",
+        name: "Expo Way",
+        logo: "EW",
+        hiring: true,
+        description: "Hiring Telesales agents for a US HOUSING account with great salaries and unlimited commissions.",
+        openPositions: 1,
     }
 ];
 
