@@ -18,10 +18,11 @@ export async function POST(req: NextRequest) {
         const recruiterReference = formData.get('recruiterReference') as string || 'None';
 
         const cv = formData.get('cv') as File | null;
-        const voice = formData.get('voice') as File;
+        const voice = formData.get('voice') as File | null;
+        const voiceLink = formData.get('voiceLink') as string | null;
 
-        if (!voice) {
-            return NextResponse.json({ error: 'Voice File is required' }, { status: 400 });
+        if (!voice && !voiceLink) {
+            return NextResponse.json({ error: 'Voice File or Link is required' }, { status: 400 });
         }
 
         // 1. Upload CV to Supabase Storage (Optional)
@@ -38,16 +39,20 @@ export async function POST(req: NextRequest) {
             cvUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/applications/${cvFileName}`;
         }
 
-        // 2. Upload Voice Note to Supabase Storage
-        const voiceBuffer = await voice.arrayBuffer();
-        const voiceExt = voice.name.split('.').pop() || 'mp3';
-        const voiceFileName = `candidates/voice_${Date.now()}_${fullName.replace(/\s+/g, '_')}.${voiceExt}`;
-        const { error: voiceError } = await supabase.storage
-            .from('applications')
-            .upload(voiceFileName, voiceBuffer, { contentType: voice.type });
+        // 2. Upload Voice Note to Supabase Storage or use Link
+        let voiceUrl = voiceLink || '';
 
-        if (voiceError) throw new Error(`Voice Upload failed: ${voiceError.message}`);
-        const voiceUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/applications/${voiceFileName}`;
+        if (voice) {
+            const voiceBuffer = await voice.arrayBuffer();
+            const voiceExt = voice.name.split('.').pop() || 'mp3';
+            const voiceFileName = `candidates/voice_${Date.now()}_${fullName.replace(/\s+/g, '_')}.${voiceExt}`;
+            const { error: voiceError } = await supabase.storage
+                .from('applications')
+                .upload(voiceFileName, voiceBuffer, { contentType: voice.type });
+
+            if (voiceError) throw new Error(`Voice Upload failed: ${voiceError.message}`);
+            voiceUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/applications/${voiceFileName}`;
+        }
 
         // 3. Save to Google Sheets
         const sheets = await getGoogleSheetsClient();

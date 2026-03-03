@@ -26,14 +26,15 @@ function CandidateForm() {
 
     const [cvFile, setCvFile] = useState<File | null>(null);
     const [voiceFile, setVoiceFile] = useState<File | null>(null);
+    const [voiceLink, setVoiceLink] = useState('');
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
         setError('');
 
-        if (!voiceFile) {
-            setError('Voice Note is mandatory.');
+        if (!voiceFile && !voiceLink) {
+            setError('Either a Voice Note file or a Vocaroo link is mandatory.');
             setIsSubmitting(false);
             return;
         }
@@ -42,7 +43,8 @@ function CandidateForm() {
             const data = new FormData();
             Object.entries(formData).forEach(([key, value]) => data.append(key, value));
             if (cvFile) data.append('cv', cvFile);
-            data.append('voice', voiceFile);
+            if (voiceFile) data.append('voice', voiceFile);
+            if (voiceLink) data.append('voiceLink', voiceLink);
 
             const response = await fetch('/api/apply/candidate', {
                 method: 'POST',
@@ -158,8 +160,22 @@ function CandidateForm() {
                     <div className="p-6 border-2 border-dashed border-slate-700 rounded-2xl bg-slate-800/20 text-center hover:border-gold-500/50 transition-colors">
                         <div className="text-4xl mb-4">🎙️</div>
                         <label className="block text-sm font-medium text-slate-300 mb-2">Upload Voice Note (MP3/WAV) *</label>
-                        <p className="text-xs text-slate-500 mb-4 px-4">Please record a 1-minute audio introducing yourself in English.</p>
-                        <input required type="file" accept="audio/*" onChange={e => setVoiceFile(e.target.files?.[0] || null)} className="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-800 file:text-gold-400 hover:file:bg-slate-700 cursor-pointer" />
+                        <p className="text-xs text-slate-500 mb-4 px-4">Please record a 1-minute audio introducing yourself in English. You can either upload an audio file or paste a link from <a href="https://vocaroo.com/" target="_blank" rel="noreferrer" className="text-gold-400 hover:underline">Vocaroo</a>.</p>
+
+                        <div className="space-y-4">
+                            <input type="file" accept="audio/*" onChange={e => { setVoiceFile(e.target.files?.[0] || null); setVoiceLink(''); }} className="w-full text-sm text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-slate-800 file:text-gold-400 hover:file:bg-slate-700 cursor-pointer" />
+
+                            <div className="relative">
+                                <div className="absolute inset-0 flex items-center">
+                                    <div className="w-full border-t border-slate-700"></div>
+                                </div>
+                                <div className="relative flex justify-center text-sm">
+                                    <span className="px-2 bg-slate-900 text-slate-500">OR PASTE LINK</span>
+                                </div>
+                            </div>
+
+                            <input type="url" value={voiceLink} onChange={e => { setVoiceLink(e.target.value); setVoiceFile(null); }} placeholder="https://vocaroo.com/..." className="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-gold-500 transition text-left" />
+                        </div>
                     </div>
                 </div>
             </div>
