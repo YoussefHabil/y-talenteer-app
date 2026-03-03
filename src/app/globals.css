@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0f172a; /* Slate 900 for premium dark theme */
+  --foreground: #f8fafc; /* Slate 50 */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom Gold accents for the "premium dark & gold theme" */
+.text-gold {
+  color: #FBBF24;
+}
+
+.bg-gold {
+  background-color: #FBBF24;
+}
+
+.border-gold {
+  border-color: #FBBF24;
+}
