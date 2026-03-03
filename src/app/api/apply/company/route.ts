@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import { getGoogleSheetsClient, SPREADSHEET_ID } from '@/lib/google-sheets';
 import { sendNotificationEmail } from '@/lib/email';
 
