@@ -84,7 +84,7 @@ export default function CompanyDetailPage({ params }: { params: { id: string } }
             ]
         },
         "att": {
-            name: "AT&T",
+            name: "ATT",
             description: "🌟 Join the dynamic team at ATT as a Solar Appointments Setter! 🌞 \nAvailability to work from home depending on your performance during probation.",
             jobs: [
                 {

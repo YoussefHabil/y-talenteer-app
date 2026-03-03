@@ -20,7 +20,7 @@ const companies = [
     },
     {
         id: "att",
-        name: "AT&T",
+        name: "ATT",
         logo: "A",
         hiring: true,
         description: "Dynamic team looking for Solar Appointments Setters! Work from home availability depending on performance.",
